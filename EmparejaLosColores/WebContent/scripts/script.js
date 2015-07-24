@@ -4,6 +4,7 @@ var celdasseleccionadas=0;
 var id_celda_seleccionada=-1;
 var pareja_celda_seleccionada=-1;
 var celdaslibres = 20;
+var array_celdas_seleccionables;
 
 function colorAleatorio()
 {
@@ -75,19 +76,42 @@ function rellenarCaja()
 		var id_2 = celda_2.getAttribute("id");
 		celda_2.setAttribute("onclick","compararCelda("+i+","+id_2+");");
 	}
+	array_celdas_seleccionables = new Array(Celda_1,Celda_2,Celda_3,Celda_4,Celda_5,Celda_6,Celda_7,
+			Celda_8,Celda_9,Celda_10,Celda_11,Celda_12,Celda_13,
+			Celda_14,Celda_15,Celda_16,Celda_17,Celda_18,Celda_19,
+			Celda_20);
 }
 
 function compararCelda(pareja, id)
 {
 	if(celdasseleccionadas==0)
 	{
-		celdasseleccionadas=1;
-		
 		var celda_seleccionada_1 = id;
-		celda_seleccionada_1.style.opacity = "0.7";
 		
-		id_celda_seleccionada = id;
-		pareja_celda_seleccionada = pareja;
+		var comprobacion='False';
+		for (var i = 0; i < array_celdas_seleccionables.length; i++) 
+		{
+			var celda_a_comprobar = array_celdas_seleccionables[i];
+			if (celda_a_comprobar==celda_seleccionada_1) 
+			{
+				comprobacion = 'True';
+				array_celdas_seleccionables.splice(i, 1);
+			}
+		}
+		
+		if(comprobacion=='True')
+		{
+			celdasseleccionadas=1;
+			
+			celda_seleccionada_1.style.opacity = "0.7";
+			
+			id_celda_seleccionada = id;
+			pareja_celda_seleccionada = pareja;
+		}
+		else
+		{
+			alert('Celda ya quitada!');
+		}
 	}
 	else if(celdasseleccionadas==1)
 	{
