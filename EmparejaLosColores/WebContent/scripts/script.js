@@ -94,10 +94,12 @@ function compararCelda(pareja, id)
 		if (pareja_celda_seleccionada==pareja && id_celda_seleccionada != id) 
 		{
 			var celda_seleccionada_1 = id_celda_seleccionada;
+			celda_seleccionada_1.style.transitionDuration = "0.5";
 			celda_seleccionada_1.style.backgroundColor = "#FFF";
 			celda_seleccionada_1.style.opacity = "1";
 			
 			var celda_seleccionada_2 = id;
+			celda_seleccionada_2.style.transitionDuration = "0.5";
 			celda_seleccionada_2.style.backgroundColor = "#FFF";
 			celda_seleccionada_2.style.opacity = "1";
 			
@@ -108,6 +110,8 @@ function compararCelda(pareja, id)
 			if(celdaslibres==0)
 			{
 				alert("Enhorabuena!! Has ganado");
+				celdaslibres = 20;
+				rellenarCaja();
 			}
 		}
 		else
@@ -124,3 +128,24 @@ function compararCelda(pareja, id)
 		}
 	}
 }
+
+//// Efecto carta onClick
+///**
+// * Do the clicking stuff
+// *
+// */
+//
+//(function() {
+//  var cards = document.querySelectorAll(".card.effect__click");
+//  for ( var i  = 0, len = cards.length; i < len; i++ ) {
+//    var card = cards[i];
+//    clickListener( card );
+//  }
+//
+//  function clickListener(card) {
+//    card.addEventListener( "click", function() {
+//      var c = this.classList;
+//      c.contains("flipped") === true ? c.remove("flipped") : c.add("flipped");
+//    });
+//  }
+//})();
